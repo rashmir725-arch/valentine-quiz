@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine’s Day My Love 💖</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f5;
+    padding: 30px;
+}
+.container {
+    max-width: 800px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+h2 {
+    text-align: center;
+}
+.timer {
+    text-align: right;
+    font-weight: bold;
+    color: #d9534f;
+}
+.question {
+    margin-bottom: 30px;
+}
+.option {
+    display: block;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.correct {
+    background: #d4edda;
+    color: #155724;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(40,167,69,0.6);
+}
+.wrong {
+    background: #f8d7da;
+    color: #721c24;
+    animation: shake 0.3s;
+}
+.feedback {
+    margin-top: 8px;
+    font-style: italic;
+}
+img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Shake effect */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 3s ease-in forwards;
+    pointer-events: none;
+}
+@keyframes floatUp {
+    to {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Final message */
+.final-message {
+    margin-top: 25px;
+    padding: 20px;
+    background: #ffe6f0;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>💖 A Little Quiz From My Heart 💖</h2>
+
+<div class="timer">Time Left: <span id="time">15</span> sec</div>
+
+<form>
+
+<!-- Q1 -->
+<div class="question" data-answer="a">
+<p>1. When did we meet first?</p>
+<label class="option"><input type="radio" name="q1" value="a"> April 14, 2012</label>
+<label class="option"><input type="radio" name="q1" value="b"> August 1, 2011</label>
+<label class="option"><input type="radio" name="q1" value="c"> August 8, 2011</label>
+<div class="feedback"></div>
+</div>
+
+<!-- Q2 -->
+<div class="question" data-answer="b">
+<p>2. What do you think is my greatest wish?</p>
+<label class="option"><input type="radio" name="q2" value="a"> Vedhu</label>
+<label class="option"><input type="radio" name="q2" value="b"> Travelling to Paris with you & Vedhu</label>
+<label class="option"><input type="radio" name="q2" value="c"> Being rich</label>
+<div class="feedback"></div>
+</div>
+
+<!-- Q3 -->
+<div class="question" data-answer="c">
+<p>3. Where do you think we took this picture?</p>
+<img src="C:\Users\Dell\Downloads\shared image (30).jpg">
+<label class="option"><input type="radio" name="q3" value="a"> Bus stop, Kazhakootam</label>
+<label class="option"><input type="radio" name="q3" value="b"> Le Arabia, Kazhakootam</label>
+<label class="option"><input type="radio" name="q3" value="c"> Somewhere in Trivandrum</label>
+<div class="feedback"></div>
+</div>
+
+<!-- Q4 -->
+<div class="question" data-answer="c">
+<p>4. Whom do you love the most in this world?</p>
+<label class="option"><input type="radio" name="q4" value="a"> Mom</label>
+<label class="option"><input type="radio" name="q4" value="b"> Vedhu</label>
+<label class="option"><input type="radio" name="q4" value="c"> Rashmi 💕</label>
+<div class="feedback"></div>
+</div>
+
+<!-- Q5 -->
+<div class="question" data-answer="a" id="valentineQuestion">
+<p>5. Will you be mine forever? 💍</p>
+<label class="option"><input type="radio" name="q5" value="a"> Yes, always ❤️</label>
+<label class="option"><input type="radio" name="q5" value="b"> Yes 🙂</label>
+<label class="option"><input type="radio" name="q5" value="c"> Kind of 🤔</label>
+<div class="feedback"></div>
+<div class="final-message" id="finalMessage">
+💍 Happy Valentine’s Day, my forever ❤️<br>
+I choose you. Every day. Every lifetime.
+</div>
+</div>
+
+<button type="button" onclick="submitQuiz()">Submit</button>
+<div class="result" id="result"></div>
+
+</form>
+</div>
+
+<script>
+const sweetQuotes = [
+ "✨ That’s my soulmate!",
+ "💖 You know my heart so well!",
+ "🌸 Love level: Expert",
+ "🥰 Always in sync with me"
+];
+
+document.querySelectorAll(".question:not(#valentineQuestion)").forEach(q => {
+ const answer = q.dataset.answer;
+ const feedback = q.querySelector(".fee
